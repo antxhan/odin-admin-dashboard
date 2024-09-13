@@ -303,4 +303,19 @@ header {
 main {
   display: grid;
   background-color: var(--clr-neutral-500);
+  margin-inline: 1.5rem;
+  margin-block: 1.5rem;
+}
+
+.project-cards {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.project-card {
+  background-color: white;
+}
+
+.project-card-icons {
+  display: flex;
 }
