@@ -174,14 +174,18 @@ nav > ul > li:nth-last-child(4) {
 /* HEADER ------------------------------------------ */
 
 header {
-  padding-inline: 4rem;
+  padding-inline: 3rem;
+  border: 1px solid red;
 }
 
 .top-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* padding-inline: 4rem; */
+  border: 1px solid blue;
+  /* display: flex; */
+  /* justify-content: space-between; */
+  /* align-items: center; */
   & img {
     border-radius: 50%;
     width: 3rem;
@@ -190,15 +194,15 @@ header {
 }
 
 .search-container {
-  display: flex;
-  align-items: center;
+  /* display: flex; */
+  /* align-items: center; */
   gap: 0.5rem;
 }
 
 .user-container {
   /* font-size: var(--fs-normal); */
   font-size: 1rem;
-  display: flex;
-  align-items: center;
+  /* display: flex; */
+  /* align-items: center; */
   gap: 1.67rem;
 }
