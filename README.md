@@ -2,4 +2,7 @@
 
 # to-do
 
-- [ ] fix(style): Roboto font
+- [ ] fix(style): reuseable classes.
+- [ ] fix(style): responsive design.
+- [ ] fix(style): hover states.
+- [ ] fix(style): refactor.

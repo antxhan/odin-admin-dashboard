@@ -113,7 +113,6 @@
 
 body {
   min-height: 100vh;
-  /* height: 100%; */
   display: grid;
   grid-template-columns: minmax(auto, 310px) 1fr;
   background-color: var(--clr-neutral-500);
@@ -163,12 +162,25 @@ button {
   font-weight: 500;
   width: 6.25rem;
   height: 2.5rem;
+  & svg {
+    display: none;
+  }
   &:hover {
     cursor: pointer;
   }
 }
 
 /* NAV ------------------------------------------ */
+
+.menu-btn {
+  width: max-content;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  display: none;
+}
 
 nav {
   font-weight: 500;
@@ -228,7 +240,6 @@ header {
   display: grid;
   grid-template-columns: 1fr max-content;
   gap: 2rem;
-  /* border: 1px solid blue; */
   align-items: center;
   & img {
     border-radius: 50%;
@@ -258,7 +269,6 @@ header {
 
 .user-container {
   align-items: center;
-  /* font-size: 1rem; */
   display: grid;
   grid-template-columns: repeat(3, max-content);
   gap: 1.5rem;
@@ -272,10 +282,9 @@ header {
 
 .bottom-header {
   display: grid;
-  grid-template-columns: minmax(400px, 1fr) minmax(max-content, 22.33rem);
+  grid-template-columns: minmax(285px, 1fr) minmax(max-content, 22.33rem);
   align-items: center;
-  /* border: 1px solid blue; */
-  /* gap: 1rem; */
+  gap: 1rem;
 }
 
 .user-greeting {
@@ -283,11 +292,16 @@ header {
   grid-template-columns: max-content 1fr;
   gap: 1.5rem;
   align-items: center;
-  /* border: 1px solid green; */
   & > div {
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
+    white-space: nowrap;
+    overflow: hidden;
+    & h2 {
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
   }
   & p {
     font-weight: 600;
@@ -301,14 +315,8 @@ header {
 
 .user-actions {
   display: flex;
-  /* border: 1px solid red; */
   gap: 1rem;
-  /* width: min(100%, 27rem); */
   justify-content: space-between;
-  /* gap: 1rem; */
-  /* display: grid; */
-  /* grid-template-columns: repeat(3, 1fr); */
-  /* gap: 2.5rem; */
 }
 
 /* MAIN ------------------------------------------ */
@@ -330,7 +338,7 @@ main {
 
 .project-cards {
   display: grid;
-  grid-template-columns: repeat(2, minmax(375px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(375px, 1fr));
   gap: 1.5rem;
 }
 
@@ -341,7 +349,6 @@ main {
   background-color: white;
   border-radius: 0.5rem;
   border-left: 0.5rem solid var(--clr-yellow);
-  /* padding: 1.5rem; */
   padding-inline: 1.5rem;
   padding-block: 2rem;
   box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.25);
@@ -361,7 +368,6 @@ aside {
 }
 
 .announcement-container {
-  /* padding: 2rem; */
   padding-block: 1rem;
   padding-inline: 2rem;
   background-color: white;
@@ -402,5 +408,147 @@ aside {
   align-items: center;
   & p:first-of-type {
     color: black;
+  }
+}
+
+/* MEDIA QUERIES ------------------------------------------ */
+
+@media (max-width: 960px) {
+  body {
+    grid-template-columns: max-content 1fr;
+  }
+  nav {
+    & li,
+    & .logo-container {
+      grid-template-columns: 1fr;
+    }
+
+    & li > a,
+    & .logo-container > h1 {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 820px) {
+  nav {
+    display: none;
+    position: fixed;
+    box-shadow: 3px 0 10px 0 rgba(0, 0, 0, 0.25);
+  }
+  .show {
+    display: block;
+    height: 100%;
+    & li > a,
+    & .logo-container > h1 {
+      display: block;
+    }
+    & li,
+    & .logo-container {
+      grid-template-columns: 3rem max-content;
+    }
+    & .logo-container {
+      visibility: hidden;
+    }
+  }
+  .logo-container {
+    margin-bottom: 2rem;
+  }
+  body {
+    grid-template-columns: 1fr;
+    position: relative;
+    height: 100dvh;
+  }
+  header {
+    position: fixed;
+    width: 100%;
+    gap: 0;
+
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: space-between;
+    padding: 0;
+    background: none;
+  }
+  main {
+    grid-template-columns: 1fr;
+    margin: 1.25rem;
+    padding-bottom: 6rem;
+    padding-top: 3.5rem;
+  }
+  .top-header {
+    gap: 1rem;
+    grid-template-columns: max-content 1fr max-content;
+    z-index: 100;
+    background-color: white;
+    padding-inline: 1.25rem;
+    padding-block: 0.5rem;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.25);
+    & svg {
+      display: block;
+    }
+  }
+  .menu-btn {
+    display: flex;
+  }
+  .user-greeting {
+    display: none;
+  }
+  .search-container {
+    grid-template-columns: 1fr;
+    position: relative;
+    & input {
+      width: 100%;
+      padding-left: 2rem;
+    }
+    & svg {
+      position: absolute;
+      left: 0.5rem;
+    }
+  }
+  .user-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    & svg {
+      align-self: center;
+      justify-self: center;
+    }
+    & img {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+    margin-right: 0;
+    & h3 {
+      display: none;
+    }
+  }
+  .bottom-header {
+    display: flex;
+    justify-content: center;
+    left: 0;
+    width: 100%;
+    align-items: flex-end;
+  }
+  .user-actions {
+    box-shadow: 0px -3px 5px 0 rgba(0, 0, 0, 0.25);
+    width: 100%;
+    justify-content: space-evenly;
+    background-color: white;
+    padding-block: 0.5rem;
+    & button {
+      & svg {
+        display: inline;
+        width: 2.5rem;
+        height: 2.5rem;
+        fill: var(--clr-blue);
+      }
+      font-size: var(--fs-small);
+      background: none;
+      color: black;
+      width: 4rem;
+      height: 4rem;
+    }
   }
 }
