@@ -359,6 +359,18 @@ main {
   justify-content: flex-end;
   gap: 1.67rem;
   margin-top: 1rem;
+  color: black;
+  & button {
+    width: max-content;
+    & svg {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+    background: none;
+    fill: black;
+  }
 }
 
 aside {
@@ -466,8 +478,6 @@ aside {
     position: fixed;
     width: 100%;
     gap: 0;
-
-    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -480,18 +490,6 @@ aside {
     margin: 1.25rem;
     padding-bottom: 6rem;
     padding-top: 3.5rem;
-  }
-  .top-header {
-    gap: 1rem;
-    grid-template-columns: max-content 1fr max-content;
-    z-index: 100;
-    background-color: white;
-    padding-inline: 1.25rem;
-    padding-block: 0.5rem;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.25);
-    & svg {
-      display: block;
-    }
   }
   .menu-btn {
     display: flex;
@@ -527,12 +525,26 @@ aside {
       display: none;
     }
   }
+  .top-header {
+    gap: 1rem;
+    grid-template-columns: max-content 1fr max-content;
+    z-index: 100;
+    background-color: white;
+    padding-inline: 1.25rem;
+    padding-block: 0.5rem;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.25);
+    & svg {
+      display: block;
+    }
+  }
   .bottom-header {
     display: flex;
     justify-content: center;
     left: 0;
     width: 100%;
     align-items: flex-end;
+    position: fixed;
+    bottom: 0;
   }
   .user-actions {
     box-shadow: 0px -3px 5px 0 rgba(0, 0, 0, 0.25);

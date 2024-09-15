@@ -4,4 +4,5 @@
 
 - [ ] fix(style): hover states.
 - [ ] fix(style): refactor.
-- [ ] feat(nav): transition.
+- [ ] fix(style): can't select text or click links on mobile.
+- [ ] fix(style): project icons titles are undefined.
