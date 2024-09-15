@@ -85,6 +85,7 @@
 :root {
   /* COLORS */
   --clr-blue: #4590ce;
+  --clr-blue-hover: #3a7bb8;
   --clr-yellow: #e7b64a;
   --clr-neutral-500: #e3e8ef;
   --clr-neutral-300: #7c7c7c;
@@ -147,10 +148,13 @@ h4 {
 
 h5 {
   font-size: var(--fs-normal-m);
+  font-weight: 500;
 }
 
 h6 {
   font-size: var(--fs-small);
+  font-weight: 500;
+  margin-block-end: 3px;
 }
 
 button {
@@ -201,11 +205,18 @@ nav > ul {
   gap: 1.5rem;
 }
 
-nav > div,
-li {
-  gap: 0.67rem;
+ul {
+  list-style: none;
+  & li {
+    width: max-content;
+  }
+}
+
+nav > div > a,
+nav li a {
   display: grid;
   grid-template-columns: 3rem max-content;
+  gap: 0.67rem;
   align-items: center;
   & svg {
     justify-self: center;
@@ -218,6 +229,7 @@ li {
     height: 3rem;
   }
   margin-bottom: 4rem;
+  width: max-content;
 }
 
 nav > ul > li:nth-last-child(4) {
@@ -270,19 +282,47 @@ header {
 .user-container {
   align-items: center;
   display: grid;
-  grid-template-columns: repeat(3, max-content);
-  gap: 1.5rem;
-  margin-right: 1rem;
+  grid-template-columns: repeat(2, max-content);
+  gap: 1rem;
   img {
-    width: 3.5rem;
-    height: 3.5rem;
+    width: 3rem;
+    height: 3rem;
     border-radius: 100vw;
+  }
+}
+
+.user-container button:first-child {
+  width: max-content;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  & svg {
+    display: block;
+  }
+}
+
+.user-container button:last-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: max-content;
+  color: black;
+  background: none;
+
+  height: max-content;
+  & h3 {
+    padding-inline: 1rem;
+  }
+  &:hover {
+    outline: 1px solid var(--clr-neutral-300);
   }
 }
 
 .bottom-header {
   display: grid;
-  grid-template-columns: minmax(285px, 1fr) minmax(max-content, 22.33rem);
+  grid-template-columns: minmax(285px, 1fr) minmax(max-content, 22rem);
   align-items: center;
   gap: 1rem;
 }
@@ -317,6 +357,9 @@ header {
   display: flex;
   gap: 1rem;
   justify-content: space-between;
+  & button:hover {
+    background-color: var(--clr-blue-hover);
+  }
 }
 
 /* MAIN ------------------------------------------ */
@@ -338,7 +381,7 @@ main {
 
 .project-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(375px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   gap: 1.5rem;
 }
 
@@ -352,6 +395,9 @@ main {
   padding-inline: 1.5rem;
   padding-block: 2rem;
   box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.25);
+  & a:hover {
+    text-decoration: underline;
+  }
 }
 
 .project-card-icons {
@@ -423,6 +469,12 @@ aside {
   & p:first-of-type {
     color: black;
   }
+  &:hover {
+    /* background-color: var(--clr-neutral-500); */
+    & p:first-child {
+      text-decoration: underline;
+    }
+  }
 }
 
 /* MEDIA QUERIES ------------------------------------------ */
@@ -432,13 +484,20 @@ aside {
     grid-template-columns: max-content 1fr;
   }
   nav {
-    & li,
-    & .logo-container {
+    & li a,
+    & .logo-container > a {
       grid-template-columns: 1fr;
+      align-items: center;
+      justify-content: center;
     }
-
-    & li > a,
-    & .logo-container > h1 {
+    & ul {
+      align-items: center;
+      justify-content: center;
+    }
+    & .logo-container h1 {
+      display: none;
+    }
+    p {
       display: none;
     }
   }
@@ -449,15 +508,17 @@ aside {
     left: -240px;
     transition: 300ms;
     position: fixed;
+    padding-inline: 2rem;
     box-shadow: 3px 0 10px 0 rgba(0, 0, 0, 0.25);
     height: 100%;
-    & li > a,
-    & .logo-container > h1 {
-      display: block;
+    ul {
+      align-items: start;
     }
-    & li,
-    & .logo-container {
-      grid-template-columns: 3rem max-content;
+    & li a {
+      grid-template-columns: max-content max-content;
+    }
+    p {
+      display: inline;
     }
     & .logo-container {
       visibility: hidden;
