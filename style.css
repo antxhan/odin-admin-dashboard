@@ -389,8 +389,10 @@ aside {
 
 .announcement {
   padding-block: 1rem;
-
   font-size: var(--fs-xsmall);
+  & a:hover {
+    text-decoration: underline;
+  }
 }
 
 .announcement:not(:last-child) {
